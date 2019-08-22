@@ -1,16 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`right render for button 1`] = `
+exports[`the button is rendered correctly 1`] = `
 <DocumentFragment>
-  <div
-    class="css-1gafw97"
-    data-testid="container"
-  >
-    <button
-      data-testid="button"
-    >
-      Login
-    </button>
-  </div>
+  <button
+    class="css-vyx9lg"
+    data-testid="button"
+    type="submit"
+  />
 </DocumentFragment>
 `;

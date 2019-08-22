@@ -6,60 +6,56 @@ import {
   waitForElement
 } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-
+import "jest-styled-components";
 import Button from "./button";
 
 afterEach(cleanup);
 
-test("right render for button", () => {
+test("the button is rendered correctly", () => {
   const { asFragment } = render(<Button />);
   expect(asFragment()).toMatchSnapshot();
 });
 
-test("button have right text", () => {
-  const { getByTestId } = render(<Button />);
-  expect(getByTestId("button")).toHaveTextContent("Login");
-});
-
-test("button click and called the right prop function", () => {
+test("button called function on click", () => {
   const handleClick = jest.fn();
 
-  const { getByText } = render(<Button onClick={handleClick}></Button>);
+  const { getByTestId } = render(<Button onClick={handleClick}></Button>);
 
-  expect(getByText("Login")).toBeTruthy();
+  expect(getByTestId("button")).toBeTruthy();
 
-  fireEvent.click(getByText(/Login/i));
+  fireEvent.click(getByTestId("button"));
   expect(handleClick).toHaveBeenCalled();
 });
 
-test("right class name", () => {
-  const { getByTestId } = render(<Button />);
-  expect(getByTestId("container")).toHaveClass("css-1gafw97");
-});
-
-test("check if there is loading after click", async () => {
-  const { getByTestId, getByText } = render(<Button />);
-
-  fireEvent.click(getByText("Login"));
+test("loading element is rendered and have progress attribute", async () => {
+  const { getByTestId } = render(<Button loading={true} progress={100} />);
 
   const loadingElement = await waitForElement(() => getByTestId("loading"));
 
   expect(loadingElement).toBeInTheDocument();
+
+  expect(loadingElement).toHaveAttribute("progress");
 });
 
-test("get text of button element", () => {
-  const { container } = render(<Button />);
-  expect(container.querySelector("button").innerHTML).toBe("Login");
-});
-
-test("check specific style for the button", () => {
+test("background color of the button is correct", () => {
   const { container } = render(<Button />);
   expect(container.querySelector("button")).toHaveStyle(`
-    background-color: #5737cb;
+    background-color: #504de5;
 `);
 });
 
-test("check if button is enable", () => {
-  const { container } = render(<Button />);
-  expect(container.querySelector("button")).toBeEnabled();
+test("color of the button is correct", () => {
+  const { getByTestId } = render(<Button />);
+  expect(getByTestId("button")).toHaveStyle(`
+  color: white`);
+});
+
+test("button have disabled attribute", () => {
+  const { getByTestId } = render(<Button disabled="disabled" />);
+  expect(getByTestId("button")).toHaveAttribute("disabled");
+});
+
+test("button have type attribute", () => {
+  const { getByTestId } = render(<Button type="submit" />);
+  expect(getByTestId("button")).toHaveAttribute("type");
 });

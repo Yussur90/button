@@ -1,40 +1,41 @@
-import React, { useState } from "react";
-import { css } from "emotion";
+import React from "react";
 
-export default function Button({ url, onClick }) {
-  const [loading, setLoading] = useState(false);
+import styled from "@emotion/styled";
 
-  const loginFunction = () => {
-    setLoading(true);
-    setTimeout(function() {
-      setLoading(false);
-    }, 9000);
-  };
-
-  const buttonText = "Login";
+export default function Button({
+  onClick,
+  children,
+  className,
+  style,
+  theme,
+  type,
+  disabled,
+  loading,
+  progress
+}) {
+  const Button = styled.button`
+    background-color: #504de5;
+    width: 407.6px;
+    height: 55px;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+  `;
 
   return (
-    <div
-      className={css`
-        button{
-          background-color: #5737cb;
-          width:290px;
-          height:40px;
-              border-radius: 5px;
-              color:white;
-        }
-
-
-        }
-      `}
-      onClick={() => loginFunction()}
-      data-testid="container"
+    <Button
+      data-testid="button"
+      onClick={onClick}
+      type={type || "submit"}
+      disabled={disabled || loading}
     >
-      {}
-      <button data-testid="button" onClick={onClick}>
-        {buttonText}
-      </button>
-      {loading && <div data-testid="loading">loading</div>}
-    </div>
+      {loading ? (
+        <div progress={progress} data-testid="loading">
+          loading
+        </div>
+      ) : (
+        children
+      )}
+    </Button>
   );
 }

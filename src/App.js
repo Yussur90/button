@@ -1,15 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "./button";
 import "./App.css";
 
-const onClick = () => {
-  console.log("clicked");
-};
-
 function App() {
+  const [loading, setLoading] = useState(false);
+  const onClick = () => {
+    setLoading(true);
+    setTimeout(function() {
+      setLoading(false);
+    }, 9000);
+  };
+
   return (
     <div className="App">
-      <Button onClick={() => onClick()} />
+      <Button
+        loading={loading}
+        onClick={() => onClick()}
+        type="submit"
+        disabled={false}
+        progress={30}
+      >
+        Login
+      </Button>
     </div>
   );
 }
