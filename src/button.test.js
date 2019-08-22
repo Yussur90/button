@@ -59,3 +59,9 @@ test("button have type attribute", () => {
   const { getByTestId } = render(<Button type="submit" />);
   expect(getByTestId("button")).toHaveAttribute("type");
 });
+
+test("children for button", () => {
+  const { container } = render(<Button children="children" />);
+
+  expect(container.children.length).toBe(1);
+});
