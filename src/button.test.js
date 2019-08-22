@@ -27,7 +27,7 @@ test("button called function on click", () => {
   expect(handleClick).toHaveBeenCalled();
 });
 
-test("loading element is rendered and have progress attribute", async () => {
+test("loading element is rendered and have progress props", async () => {
   const { getByTestId, rerender } = render(
     <Button loading={true} progress={100} />
   );
