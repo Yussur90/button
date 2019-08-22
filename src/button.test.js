@@ -65,7 +65,7 @@ test("button have type attribute", () => {
 });
 
 test("children for button", () => {
-  const { container } = render(<Button children="children" />);
+  const { container } = render(<Button />);
 
   expect(container.children.length).toBe(1);
 });
