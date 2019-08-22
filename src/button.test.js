@@ -69,14 +69,3 @@ test("children for button", () => {
 
   expect(container.children.length).toBe(1);
 });
-
-// test("calling render with the same component on the same container does not remount", () => {
-//   const { getByTestId, rerender, getByText } = render(
-//     <Button loading={true} />
-//   );
-//   expect(getByTestId("loading")).toBeVisible();
-//
-//   // re-render the same component with different props
-//   rerender(<Button loading={false} />);
-//   expect(getByText("button")).toHaveTextContent("Login");
-// });
