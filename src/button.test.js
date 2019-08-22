@@ -22,7 +22,7 @@ test("button called function on click", () => {
   const { getByTestId } = render(<Button onClick={handleClick}></Button>);
 
   expect(getByTestId("button")).toBeTruthy();
-
+  expect(getByTestId("button")).toHaveProperty("click");
   fireEvent.click(getByTestId("button"));
   expect(handleClick).toHaveBeenCalled();
 });
@@ -55,13 +55,13 @@ test("color of the button is correct", () => {
 });
 
 test("button have disabled attribute", () => {
-  const { getByTestId } = render(<Button disabled="disabled" />);
-  expect(getByTestId("button")).toHaveAttribute("disabled");
+  const { getByTestId } = render(<Button />);
+  expect(getByTestId("button")).toHaveProperty("disabled");
 });
 
 test("button have type attribute", () => {
-  const { getByTestId } = render(<Button type="submit" />);
-  expect(getByTestId("button")).toHaveAttribute("type");
+  const { getByTestId } = render(<Button />);
+  expect(getByTestId("button")).toHaveProperty("type");
 });
 
 test("children for button", () => {
