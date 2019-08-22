@@ -14,7 +14,7 @@ export default function Button({
   progress
 }) {
   const Button = styled.button`
-    background-color: #504de5;
+    background-color: ${theme};
     width: 407.6px;
     height: 55px;
     border-radius: 6px;

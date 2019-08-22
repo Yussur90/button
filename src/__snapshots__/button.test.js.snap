@@ -3,17 +3,7 @@
 exports[`button test the button is rendered correctly 1`] = `
 <DocumentFragment>
   <button
-    class="css-vyx9lg"
-    data-testid="button"
-    type="submit"
-  />
-</DocumentFragment>
-`;
-
-exports[`the button is rendered correctly 1`] = `
-<DocumentFragment>
-  <button
-    class="css-vyx9lg"
+    class="css-jemad4"
     data-testid="button"
     type="submit"
   />

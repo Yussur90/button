@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  render,
-  cleanup,
-  fireEvent,
-  waitForElement
-} from "@testing-library/react";
+import { render, cleanup, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import "jest-styled-components";
 import Button from "./button";
@@ -45,8 +40,7 @@ describe("button test", () => {
   test("background color of the button is correct", () => {
     const { getByTestId } = render(<Button />);
     expect(getByTestId("button")).toHaveStyle(`
-    background-color: #504de5;
-`);
+  background-color: "#504de5"`);
   });
 
   test("color of the button is correct", () => {
