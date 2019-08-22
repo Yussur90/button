@@ -11,61 +11,63 @@ import Button from "./button";
 
 afterEach(cleanup);
 
-test("the button is rendered correctly", () => {
-  const { asFragment } = render(<Button />);
-  expect(asFragment()).toMatchSnapshot();
-});
+describe("button test", () => {
+  test("the button is rendered correctly", () => {
+    const { asFragment } = render(<Button />);
+    expect(asFragment()).toMatchSnapshot();
+  });
 
-test("button called function on click", () => {
-  const handleClick = jest.fn();
+  test("button called function on click", () => {
+    const handleClick = jest.fn();
 
-  const { getByTestId } = render(<Button onClick={handleClick}></Button>);
+    const { getByTestId } = render(<Button onClick={handleClick}></Button>);
 
-  expect(getByTestId("button")).toBeTruthy();
-  expect(getByTestId("button")).toHaveProperty("click");
-  fireEvent.click(getByTestId("button"));
-  expect(handleClick).toHaveBeenCalled();
-});
+    expect(getByTestId("button")).toBeTruthy();
+    expect(getByTestId("button")).toHaveProperty("click");
+    fireEvent.click(getByTestId("button"));
+    expect(handleClick).toHaveBeenCalled();
+  });
 
-test("loading element is rendered and have progress props", async () => {
-  const { getByTestId, rerender } = render(
-    <Button loading={true} progress={100} />
-  );
+  test("loading element is rendered and have progress props", async () => {
+    const { getByTestId, rerender } = render(
+      <Button loading={true} progress={100} />
+    );
 
-  const loadingElement = await waitForElement(() => getByTestId("loading"));
+    const loadingElement = await waitForElement(() => getByTestId("loading"));
 
-  expect(loadingElement).toBeInTheDocument();
+    expect(loadingElement).toBeInTheDocument();
 
-  expect(loadingElement).toHaveAttribute("progress");
-  rerender(<Button loading={false} />);
-  expect(loadingElement).not.toBeInTheDocument();
-});
+    expect(loadingElement).toHaveAttribute("progress");
+    rerender(<Button loading={false} />);
+    expect(loadingElement).not.toBeInTheDocument();
+  });
 
-test("background color of the button is correct", () => {
-  const { container } = render(<Button />);
-  expect(container.querySelector("button")).toHaveStyle(`
+  test("background color of the button is correct", () => {
+    const { container } = render(<Button />);
+    expect(container.querySelector("button")).toHaveStyle(`
     background-color: #504de5;
 `);
-});
+  });
 
-test("color of the button is correct", () => {
-  const { getByTestId } = render(<Button />);
-  expect(getByTestId("button")).toHaveStyle(`
+  test("color of the button is correct", () => {
+    const { getByTestId } = render(<Button />);
+    expect(getByTestId("button")).toHaveStyle(`
   color: white`);
-});
+  });
 
-test("button have disabled attribute", () => {
-  const { getByTestId } = render(<Button />);
-  expect(getByTestId("button")).toHaveProperty("disabled");
-});
+  test("button have disabled attribute", () => {
+    const { getByTestId } = render(<Button />);
+    expect(getByTestId("button")).toHaveProperty("disabled");
+  });
 
-test("button have type attribute", () => {
-  const { getByTestId } = render(<Button />);
-  expect(getByTestId("button")).toHaveProperty("type");
-});
+  test("button have type attribute", () => {
+    const { getByTestId } = render(<Button />);
+    expect(getByTestId("button")).toHaveProperty("type");
+  });
 
-test("children for button", () => {
-  const { container } = render(<Button />);
+  test("children for button", () => {
+    const { container } = render(<Button />);
 
-  expect(container.children.length).toBe(1);
+    expect(container.children.length).toBe(1);
+  });
 });
