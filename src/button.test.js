@@ -43,8 +43,8 @@ describe("button test", () => {
   });
 
   test("background color of the button is correct", () => {
-    const { container } = render(<Button />);
-    expect(container.querySelector("button")).toHaveStyle(`
+    const { getByTestId } = render(<Button />);
+    expect(getByTestId("button")).toHaveStyle(`
     background-color: #504de5;
 `);
   });
