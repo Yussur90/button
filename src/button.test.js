@@ -28,12 +28,12 @@ describe("button test", () => {
     expect(handleClick).toHaveBeenCalled();
   });
 
-  test("loading element is rendered and have progress props", async () => {
+  test("loading element is rendered and have progress props", () => {
     const { getByTestId, rerender } = render(
       <Button loading={true} progress={100} />
     );
 
-    const loadingElement = await waitForElement(() => getByTestId("loading"));
+    const loadingElement = getByTestId("loading");
 
     expect(loadingElement).toBeInTheDocument();
 
