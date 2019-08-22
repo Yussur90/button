@@ -28,13 +28,17 @@ test("button called function on click", () => {
 });
 
 test("loading element is rendered and have progress attribute", async () => {
-  const { getByTestId } = render(<Button loading={true} progress={100} />);
+  const { getByTestId, rerender } = render(
+    <Button loading={true} progress={100} />
+  );
 
   const loadingElement = await waitForElement(() => getByTestId("loading"));
 
   expect(loadingElement).toBeInTheDocument();
 
   expect(loadingElement).toHaveAttribute("progress");
+  rerender(<Button loading={false} />);
+  expect(loadingElement).not.toBeInTheDocument();
 });
 
 test("background color of the button is correct", () => {
@@ -65,3 +69,14 @@ test("children for button", () => {
 
   expect(container.children.length).toBe(1);
 });
+
+// test("calling render with the same component on the same container does not remount", () => {
+//   const { getByTestId, rerender, getByText } = render(
+//     <Button loading={true} />
+//   );
+//   expect(getByTestId("loading")).toBeVisible();
+//
+//   // re-render the same component with different props
+//   rerender(<Button loading={false} />);
+//   expect(getByText("button")).toHaveTextContent("Login");
+// });
