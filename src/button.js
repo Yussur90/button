@@ -18,8 +18,8 @@ export default function Button({
     width: 407.6px;
     height: 55px;
     border-radius: 6px;
-    color: white;
     cursor: pointer;
+    ${style};
   `;
 
   return (

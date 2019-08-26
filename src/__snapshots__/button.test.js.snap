@@ -3,7 +3,7 @@
 exports[`button test the button is rendered correctly 1`] = `
 <DocumentFragment>
   <button
-    class="css-jemad4"
+    class="css-xnktn1"
     data-testid="button"
     type="submit"
   />

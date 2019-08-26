@@ -20,6 +20,7 @@ function App() {
         disabled={false}
         progress={30}
         theme="#504de5"
+        style={{ color: "white" }}
       >
         Login
       </Button>

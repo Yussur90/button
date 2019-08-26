@@ -45,8 +45,7 @@ describe("button test", () => {
 
   test("color of the button is correct", () => {
     const { getByTestId } = render(<Button />);
-    expect(getByTestId("button")).toHaveStyle(`
-  color: white`);
+    expect(getByTestId("button")).toHaveStyle(`color: "white"`);
   });
 
   test("button have disabled attribute", () => {
@@ -57,6 +56,11 @@ describe("button test", () => {
   test("button have type attribute", () => {
     const { getByTestId } = render(<Button />);
     expect(getByTestId("button")).toHaveProperty("type");
+  });
+
+  test("button have style attribute", () => {
+    const { getByTestId } = render(<Button />);
+    expect(getByTestId("button")).toHaveProperty("style");
   });
 
   test("children for button", () => {
